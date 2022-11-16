@@ -1,0 +1,97 @@
+**TABELA**
+ALUNO
+
+P_NOME      U_NOME      MATRÍCULA   SÉRIE       DISCIPLINA      NOTA
+Vitória     Claudino    5542        2º ano      Matemática      7,0
+Luiz        Silva       6215        1º ano      Português       8,0
+André       Carvalho    4521        3º ano      Matemática      9,5
+Alan        Vilela      3285        1º ano      História        8,0 
+Figueiredo  Santos      4598        2º ano      Geografia       9,0  
+
+**RESPOSTAS**
+
+1-  σNOTA >= 7,0(ALUNO)
+    SELECT * FROM ALUNO WHERE NOTA > 7.0
+
+        ALUNO
+        P_NOME      U_NOME      MATRÍCULA   SÉRIE       DISCIPLINA      NOTA
+        Vitória     Claudino    5542        2º ano      Matemática      7,0
+        Luiz        Silva       6215        1º ano      Português       8,0
+        André       Carvalho    4521        3º ano      Matemática      9,5
+        Alan        Vilela      3285        1º ano      História        8,0 
+        Figueiredo  Santos      4598        2º ano      Geografia       9,0 
+
+2)  σSÉRIE = "1º ano" ^ NOTA >= 8,0 (ALUNO)
+    SELECT * FROM ALUNO WHERE NOTA >= 8.0 AND SÉRIE = "1º ano"
+
+        ALUNO
+        P_NOME      U_NOME      MATRÍCULA   SÉRIE       DISCIPLINA      NOTA
+        Luiz        Silva       6215        1º ano      Português       8,0
+        Alan        Vilela      3285        1º ano      História        8,0
+
+3)  πP_NOME, NOTA (ALUNO)
+    SELECT P_NOME, U_NOME, NOTA FROM ALUNO
+
+        ALUNO       
+        P_NOME      U_NOME      NOTA
+        Vitória     Claudino    7,0
+        Luiz        Silva       8,0
+        André       Carvalho    9,5
+        Alan        Vilela      8,0
+
+4)  CREATE TABLE PROFESSOR (
+    P_NOME varchar(15),
+    U_NOME varchar(15)
+    );
+
+        PROFESSOR
+        P_NOME      U_NOME
+        Ivaldir	    Junior
+        Erica	    Medeiros
+        Anderson    Silva
+        Djacir      Maciel
+
+5)  CREATE TABLE ALUNO (
+    P_NOME varchar(15),
+    U_NOME varchar(15)
+    );
+
+        ALUNO
+        P_NOME      U_NOME
+        Rubem	    Braga
+        Jean	    Carlos
+        Hugo	    Nagas
+        Anderson    Silva
+
+6)  SELECT * FROM ALUNO
+    UNION
+    SELECT * FROM PROFESSOR;
+
+        ALUNO UNION PROFESSOR
+        P_NOME      U_NOME
+        Ivaldir	    Junior
+        Erica	    Medeiros
+        Anderson    Silva
+        Djacir      Maciel
+        Rubem	    Braga
+        Jean	    Carlos
+        Hugo	    Nagas
+
+7)  SELECT * FROM ALUNO
+    INTERSECT
+    SELECT * FROM PROFESSOR;
+        ALUNO INTERSECT PROFESSOR
+        P_NOME      U_NOME
+        Anderson    Silva
+
+8)  SELECT * FROM ALUNO
+    EXCEPT
+    SELECT * FROM PROFESSOR
+
+        ALUNO EXCEPT PROFESSOR
+        P_NOME      U_NOME
+        Rubem	    Braga
+        Jean	    Carlos
+        Hugo	    Nagas
+
+
